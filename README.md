@@ -84,7 +84,7 @@ Then open http://localhost:8000 and click **Enter if you dare**. Turn your sound
 - Harsh Kalra, Team Leader
 - Bhumi Aggarwal, Member
 
-Built with HTML, CSS, JavaScript, [three.js](https://threejs.org) and [GSAP](https://gsap.com). The fallback clown is procedural (built in code). The fan model (`assets/models/clown.glb`) is ["Pennywise+model"](https://sketchfab.com/3d-models/pennywisemodel-905da6d9d74e4d66ab8f47e2f375287b) by [ffincognito98](https://sketchfab.com/ffincognito98), licensed under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/), optimized for the web with gltf-transform (keep this credit if you keep the model); voice lines, music and sound effects are original and AI-generated. Fonts: Creepster, Nosifer, Special Elite and Cormorant Garamond (Google Fonts).
+Built with HTML, CSS, JavaScript,Chat Gpt Codex Luna, Tab 1.0, [three.js](https://threejs.org) and [GSAP](https://gsap.com). The fallback clown is procedural (built in code). The fan model (`assets/models/clown.glb`) is ["Pennywise+model"](https://sketchfab.com/3d-models/pennywisemodel-905da6d9d74e4d66ab8f47e2f375287b) by [ffincognito98](https://sketchfab.com/ffincognito98), licensed under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/), optimized for the web with gltf-transform (keep this credit if you keep the model); voice lines, music and sound effects are original and AI-generated. Fonts: Creepster, Nosifer, Special Elite and Cormorant Garamond (Google Fonts).
 
 *Fan-made hackathon project. Pennywise and IT belong to their respective owners.*
 
