@@ -31,7 +31,7 @@
    '<button class="bn-btn" aria-haspopup="true" aria-expanded="false" aria-label="Where to? Open the balloon menu"><i></i><b>WHERE<br>TO?</b><s></s></button>';
   document.body.appendChild(scrim);document.body.appendChild(w);
   var btn=w.querySelector('.bn-btn'),els=[].slice.call(w.querySelectorAll('.bn-item')),open=false;
-  var n=els.length,R=n>5?165:145,a0=side==='right'?180:0,a1=side==='right'?270:-90;
+  var n=els.length,R=n>6?210:n>5?165:145,a0=side==='right'?180:0,a1=side==='right'?270:-90;
   function place(on){els.forEach(function(el,i){var t=(a0+(a1-a0)*(n===1?0:i/(n-1)))*Math.PI/180;var x=Math.cos(t)*R,y=Math.sin(t)*R;
     el.style.transform=on?'translate('+x+'px,'+y+'px) scale(1)':'translate(0,0) scale(.2)';el.style.transitionDelay=on?(i*30)+'ms':'0ms';el.tabIndex=on?0:-1})}
   function toggle(v){open=v===undefined?!open:v;w.classList.toggle('bn-open',open);scrim.classList.toggle('on',open);btn.setAttribute('aria-expanded',open);place(open);if(open&&els[0])setTimeout(function(){els[0].focus({preventScroll:true})},60)}

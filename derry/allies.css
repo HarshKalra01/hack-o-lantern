@@ -1,0 +1,26 @@
+/* Allies of Derry — KAPIDHWAJ (The Alliance Protocol sponsor twist). Haunted Glass styling, shared by the tracker and the main site. */
+.al-wrap{padding:clamp(18px,3.5vw,34px);position:relative;overflow:hidden;color:#efe7f7;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.al-wrap::before{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,138,42,.35),transparent 65%);filter:blur(10px);pointer-events:none}
+.al-grid{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:22px;align-items:center}
+.al-kicker{color:#ffb347;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin:0}
+.al-title{display:flex;align-items:center;gap:12px;margin:8px 0 12px;font-family:Georgia,serif;font-size:clamp(30px,5vw,48px);letter-spacing:6px;line-height:1}
+.al-title span{background:linear-gradient(90deg,#c49bff,#ff8a2a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.al-emblem{width:1.2em;height:1.2em;flex:none;filter:drop-shadow(0 0 10px rgba(255,138,42,.6));animation:alWave 3s ease-in-out infinite;transform-origin:20% 90%}
+@keyframes alWave{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
+.al-lore p{color:#ddd0ea;line-height:1.6;margin:0 0 10px}.al-lore em{color:#ffb347;font-style:normal}
+.al-points{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px;font-size:14px;color:#ddd0ea}
+.al-case{font:700 12px ui-monospace,monospace;background:rgba(155,92,255,.3);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:2px 7px;cursor:pointer}
+.al-ig{display:block;text-decoration:none;color:#efe7f7;border-radius:20px;padding:16px;background:linear-gradient(160deg,rgba(155,92,255,.28),rgba(30,14,44,.4) 55%,rgba(255,138,42,.25));
+ border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);box-shadow:0 14px 40px rgba(0,0,0,.45),0 0 0 1px rgba(255,138,42,.15);transition:transform .25s,box-shadow .25s}
+.al-ig:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 18px 50px rgba(0,0,0,.5),0 0 30px rgba(255,138,42,.35)}
+.al-ig-top{display:flex;align-items:center;gap:12px}
+.al-ring{width:56px;height:56px;border-radius:50%;padding:3px;background:conic-gradient(#9b5cff,#ff8a2a,#e01b33,#9b5cff);display:grid;place-items:center;flex:none}
+.al-ring .al-emblem{width:100%;height:100%;border-radius:50%;background:#1a0f2a;padding:8px;animation:none}
+.al-ig-top b{display:block;font-size:15px}.al-ig-top small{color:#b9a9cc;font-size:12px}
+.al-ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:14px 0 10px}
+.al-ig-grid i{aspect-ratio:1;display:grid;place-items:center;font-style:normal;font-size:26px;border-radius:8px;background:linear-gradient(135deg,rgba(155,92,255,.35),rgba(255,138,42,.25));border:1px solid rgba(255,255,255,.12)}
+.al-ig-grid i:nth-child(even){background:linear-gradient(135deg,rgba(255,138,42,.35),rgba(224,27,51,.25))}
+.al-ig-cap{font-size:13px;color:#ddd0ea;margin:0 0 12px}
+.al-cta{display:block;text-align:center;padding:12px;border-radius:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,#9b5cff,#6b2fd6 50%,#ff8a2a);box-shadow:0 6px 24px rgba(155,92,255,.35)}
+@media (max-width:760px){.al-grid{grid-template-columns:1fr}.al-title{letter-spacing:3px}}
+@media (prefers-reduced-motion:reduce){.al-emblem{animation:none}}

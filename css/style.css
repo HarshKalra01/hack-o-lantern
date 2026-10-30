@@ -323,3 +323,6 @@ main a.trail,.trail{pointer-events:auto;display:inline-flex;align-items:center;g
 .dw-hint{color:#b9a9cc;font-size:13px}
 .twist-line{color:#ffb347;font-weight:600;font-size:.85rem}
 .sponsor-slot{font-size:.9rem;letter-spacing:.05em}.sponsor-slot b{letter-spacing:.2em}
+
+.al-wrap.allies{margin:4px 0}
+main .al-ig,main .al-case{pointer-events:auto}

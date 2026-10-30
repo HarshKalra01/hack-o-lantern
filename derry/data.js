@@ -9,7 +9,8 @@ DW.TAGS = [
   {id:"carnival music", icon:"🎶"},
   {id:"lost time", icon:"⏳"},
   {id:"strange water", icon:"💧"},
-  {id:"animal unease", icon:"🐕"}
+  {id:"animal unease", icon:"🐕"},
+  {id:"banner ward", icon:"🚩"}
 ];
 DW.LOCATIONS = [
   {id:"witcham", name:"Witcham St storm drain", x:330, y:175},
@@ -23,7 +24,8 @@ DW.LOCATIONS = [
   {id:"ironworks", name:"Kitchener Ironworks ruins", x:890, y:70},
   {id:"bassey", name:"Bassey Park", x:420, y:420},
   {id:"jackson", name:"Jackson St sewer grate", x:575, y:250},
-  {id:"kansas", name:"Kansas St underpass", x:180, y:120}
+  {id:"kansas", name:"Kansas St underpass", x:180, y:120},
+  {id:"ward", name:"Flag-Bearers' Ward (Canal hill)", x:300, y:540}
 ];
 DW.CYCLES = [
   {year:1908, note:"Ironworks era. Explosion at the works; a cluster of missing-child reports in the same spring."},
@@ -85,6 +87,10 @@ DW.CASES = [
  {id:"DRY-2026-005", title:"Dog won't walk past the Kissing Bridge", date:"2026-10-22", loc:"bridge", status:"Open", witness:"Dog walker",
   desc:"Their dog froze and growled at the carved railing, staring at the water below. A red ribbon was knotted around the post.",
   evidence:["Red ribbon collected","Carved initials, recent"], tags:["animal unease","red balloon"]},
+ {id:"DRY-2026-011", title:"Kapidhwaj banner found at the scene. It retreated.", date:"2026-10-29", loc:"ward", status:"Closed", witness:"Two kids on bikes",
+  desc:"A storm drain on the canal hill started laughing at dusk. Before anything climbed out, a purple-and-orange banner with a sun on it was planted over the grate. The laughing stopped, the water went still and the drain stayed quiet all night. The banner carried one word: KAPIDHWAJ, the flag-bearers.",
+  evidence:["Banner: purple over orange, sun emblem, stitched 'Kapidhwaj'","Drain silent for 24 h after (first time since 2016)","Same banner described in a 1908 ironworks letter"], tags:["banner ward","sewer voices","clown sighting"],
+  link:{href:"https://www.instagram.com/kapidhwaj.innovations/", label:"🚩 Follow the flag-bearers: @kapidhwaj.innovations ↗"}},
  {id:"DRY-2026-008", title:"Child says a clown asked his name at the park", date:"2026-10-27", loc:"bassey", status:"Open", witness:"Parent",
   desc:"A seven-year-old said a 'funny man' offered him a balloon by the drainage ditch and knew his name. No one else saw him.",
   evidence:["Child's drawing of a figure with orange hair","Balloon found deflated near ditch"], tags:["clown sighting","red balloon"]}

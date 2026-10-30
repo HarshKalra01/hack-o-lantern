@@ -227,3 +227,6 @@ kbd{font:700 12px ui-monospace,monospace;background:rgba(255,255,255,.12);border
 .posts li:hover{background:rgba(255,138,42,.3)}
 .twist{font-size:13px;color:var(--org2);font-weight:600}
 .footer{margin-bottom:110px}
+
+#signs .go.ally rect{fill:rgba(155,92,255,.9)}#signs .go.ally text{fill:#fff}
+.sponsor a{color:var(--org2)}

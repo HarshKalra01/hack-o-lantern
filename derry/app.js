@@ -105,6 +105,7 @@ function openCase(id){
    <div class="chips">${c.tags.map(t=>`<span class="chip">${tagIcon[t]||"•"} ${esc(t)}</span>`).join("")}</div>
    <h4 style="margin-top:16px">🔗 Pattern detector: ${L.length} linked case${L.length===1?"":"s"}</h4>
    <div class="m-links">${L.slice(0,8).map(x=>`<button data-case="${x.c.id}" title="${esc(x.why.join(" · "))}"><b>${x.c.id}</b> · ${esc(x.why.join(" · "))}</button>`).join("")||"<span class='det-out'>No strong links yet.</span>"}</div>
+   ${c.link?`<p style="margin-top:14px"><a class="btn primary" href="${esc(c.link.href)}" target="_blank" rel="noopener">${esc(c.link.label)}</a></p>`:""}
    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" data-showmap>Show links on map</button><button class="btn" data-clear>Clear highlight</button></div>`);
 }
 DW.openCase=openCase;

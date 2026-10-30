@@ -10,6 +10,7 @@
 <meta name="theme-color" content="#120a1c">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='32' cy='26' rx='18' ry='22' fill='%23d4142a'/%3E%3Cpath d='M32 48 L29 52 L35 52 Z' fill='%23d4142a'/%3E%3Cpath d='M32 52 C28 58 36 60 32 64' stroke='%23ccc' fill='none' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="allies.css">
 </head>
 <body>
 <!-- ATMOSPHERE -->
@@ -63,9 +64,9 @@
       <div class="glass stat cyc"><b id="stCycle">—</b><span>until the next cycle (2043)</span></div>
     </div>
     <div class="glass signposts">
-      <b>No roads in, no signs out.</b> Derry lost its nav bar. Find your way like a local: tap a <em>signpost on the town map</em>, tap the <em>red balloon</em> for "where to?", follow the balloon trail at the end of each section, or press <kbd>1</kbd>–<kbd>5</kbd>.
+      <b>No roads in, no signs out.</b> Derry lost its nav bar. Find your way like a local: tap a <em>signpost on the town map</em>, tap the <em>red balloon</em> for "where to?", follow the balloon trail at the end of each section, or press <kbd>1</kbd>–<kbd>6</kbd>.
     </div>
-    <div class="glass sponsor" id="sponsor"><span class="sp-tag">Official sponsor</span><b>KAPIDHWAJ</b><span class="sp-note">Sponsor spot · details coming</span></div>
+    <div class="glass sponsor" id="sponsor"><span class="sp-tag">🚩 The flag is up</span><b>KAPIDHWAJ</b><span class="sp-note">Derry's flag-bearers are back. <a href="#allies" data-go="#allies">Meet the allies</a> · <a href="https://www.instagram.com/kapidhwaj.innovations/" target="_blank" rel="noopener">@kapidhwaj.innovations ↗</a></span></div>
     <a class="trail" href="#map">follow the balloon → the town map 🎈</a>
   </section>
 
@@ -115,7 +116,7 @@
           <g class="lm"><rect x="40" y="40" width="70" height="40" rx="4"/><text x="120" y="68" class="lbl lm-l">DERRY ELEMENTARY</text></g>
           <g class="lm"><rect x="860" y="52" width="60" height="36" rx="4"/><text x="890" y="112" class="lbl lm-l">IRONWORKS (RUINS)</text></g>
           <g class="lm"><circle cx="420" cy="420" r="18"/><text x="420" y="452" class="lbl lm-l">BASSEY PARK</text></g>
-          <g id="signs"><g class="go" data-go="#cases" role="link" tabindex="0" aria-label="CASE FILES"><rect x="28" y="540" width="124" height="22" rx="11"/><text x="90" y="555">CASE FILES →</text></g>
+          <g id="signs"><g class="go ally" data-go="#allies" role="link" tabindex="0" aria-label="Allies of Derry"><rect x="238" y="573" width="124" height="22" rx="11"/><text x="300" y="588">🚩 ALLIES →</text></g><g class="go" data-go="#cases" role="link" tabindex="0" aria-label="CASE FILES"><rect x="28" y="540" width="124" height="22" rx="11"/><text x="90" y="555">CASE FILES →</text></g>
 <g class="go" data-go="#clues" role="link" tabindex="0" aria-label="CLUE SEARCH"><rect x="573" y="116" width="124" height="22" rx="11"/><text x="635" y="131">CLUE SEARCH →</text></g>
 <g class="go" data-go="#timeline" role="link" tabindex="0" aria-label="TIMELINE"><rect x="828" y="251" width="124" height="22" rx="11"/><text x="890" y="266">TIMELINE →</text></g>
 <g class="go" data-go="#report" role="link" tabindex="0" aria-label="REPORT"><rect x="593" y="328" width="124" height="22" rx="11"/><text x="655" y="343">REPORT →</text></g></g>
@@ -133,6 +134,7 @@
           <li data-go="#timeline">🗼 The Standpipe <span>→ Timeline</span></li>
           <li data-go="#clues">📚 The Library <span>→ Clue search</span></li>
           <li data-go="#report">🌉 Kissing Bridge <span>→ Report</span></li>
+          <li data-go="#allies">🚩 Flag-Bearers' Ward <span>→ Allies</span></li>
         </ul>
         <p class="hint">The drains, the Barrens and Neibolt Street account for most reports. Coincidence is not a pattern — until it is.</p>
       </aside>
@@ -177,6 +179,25 @@
     </div>
     <div class="clue-results" id="clueResults"></div>
     <div class="glass patterns" id="patterns" hidden></div>
+    <a class="trail" href="#allies">follow the balloon → the Allies of Derry 🚩</a>
+  </section>
+
+  <!-- ALLIES OF DERRY — sponsor twist -->
+  <section id="allies" class="section allies"><div class="glass al-wrap"><div class="al-grid">
+      <div class="al-lore">
+        <p class="al-kicker">The Alliance Protocol · Allies of Derry</p>
+        <h2 class="al-title"><svg class="al-emblem" viewBox="0 0 64 64" aria-hidden="true"><rect x="13" y="5" width="3.5" height="55" rx="1.7" fill="#efe7f7"/><circle cx="14.7" cy="5" r="3" fill="#ffb347"/><path d="M16.5 8 H54 L45 19.5 L54 31 H16.5Z" fill="#9b5cff"/><path d="M16.5 19.5 H45 L54 31 H16.5Z" fill="#ff8a2a"/><circle cx="31" cy="19.5" r="5.5" fill="#fff4d6"/><g stroke="#fff4d6" stroke-width="1.6" stroke-linecap="round"><path d="M31 10.5v2.5M31 26v2.5M22 19.5h2.5M37.5 19.5h2.5M24.6 13.1l1.8 1.8M35.6 24.1l1.8 1.8M24.6 25.9l1.8-1.8M35.6 14.9l1.8-1.8"/></g></svg><span>KAPIDHWAJ</span></h2>
+        <p><b>Kapidhwaj</b> means <em>the flag-bearer</em>. In Derry's oldest records, the kids who fought back didn't go into the dark alone: a guild of flag-bearers supplied the Losers' Club with banners, lanterns and stubborn courage. Every 27 years their banner goes up over the drains, and every time It flies, something underneath retreats.</p>
+        <p>They're still out there, still building, still carrying the flag. The ward is their Instagram: follow it and you're one of the allies.</p>
+        <ul class="al-points"><li>🚩 Banner ward: case <button class="al-case" data-case="DRY-2026-011">DRY-2026-011</button> — It retreated</li><li>🔦 Containment-ward supplier to the Losers' Club since 1908</li></ul>
+      </div>
+      <a class="al-ig" href="https://www.instagram.com/kapidhwaj.innovations/" target="_blank" rel="noopener" aria-label="Open the KAPIDHWAJ Instagram, @kapidhwaj.innovations">
+        <div class="al-ig-top"><span class="al-ring"><svg class="al-emblem" viewBox="0 0 64 64" aria-hidden="true"><rect x="13" y="5" width="3.5" height="55" rx="1.7" fill="#efe7f7"/><circle cx="14.7" cy="5" r="3" fill="#ffb347"/><path d="M16.5 8 H54 L45 19.5 L54 31 H16.5Z" fill="#9b5cff"/><path d="M16.5 19.5 H45 L54 31 H16.5Z" fill="#ff8a2a"/><circle cx="31" cy="19.5" r="5.5" fill="#fff4d6"/><g stroke="#fff4d6" stroke-width="1.6" stroke-linecap="round"><path d="M31 10.5v2.5M31 26v2.5M22 19.5h2.5M37.5 19.5h2.5M24.6 13.1l1.8 1.8M35.6 24.1l1.8 1.8M24.6 25.9l1.8-1.8M35.6 14.9l1.8-1.8"/></g></svg></span><div><b>@kapidhwaj.innovations</b><small>KAPIDHWAJ · Official sponsor · Instagram</small></div></div>
+        <div class="al-ig-grid"><i>🚩</i><i>🎈</i><i>🔦</i><i>🛡️</i><i>⚙️</i><i>🌅</i></div>
+        <p class="al-ig-cap"><b>kapidhwaj.innovations</b> The banner is up. Derry, you're not alone. #AllianceProtocol</p>
+        <span class="al-cta">Follow the flag on Instagram ↗</span>
+      </a>
+    </div></div>
     <a class="trail" href="#report">follow the balloon → Report an incident (Kissing Bridge) 🎈</a>
   </section>
 
@@ -227,7 +248,8 @@
  {href:"#cases",label:"Cases",icon:"📁",key:"2"},
  {href:"#timeline",label:"Timeline",icon:"⏳",key:"3"},
  {href:"#clues",label:"Clues",icon:"🔍",key:"4"},
- {href:"#report",label:"Report",icon:"✍️",key:"5"}],tip:"tap the balloon · keys 1–5"};</script>
+ {href:"#report",label:"Report",icon:"✍️",key:"5"},
+ {href:"#allies",label:"Allies",icon:"🚩",key:"6"}],tip:"tap the balloon · keys 1–6"};</script>
 <script src="balloon-nav.js"></script>
 </body>
 </html>
