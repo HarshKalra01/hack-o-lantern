@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Derry Incident Watch — Connect the Patterns</title>
+<meta name="description" content="A fictional incident-tracking network for the town of Derry, Maine. Map, case reports, the 27-year timeline and a searchable clue board with a pattern detector.">
+<meta property="og:title" content="Derry Incident Watch">
+<meta property="og:description" content="Derry forgets. We don't. Map, cases, timeline, clues and a pattern detector.">
+<meta name="theme-color" content="#120a1c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='32' cy='26' rx='18' ry='22' fill='%23d4142a'/%3E%3Cpath d='M32 48 L29 52 L35 52 Z' fill='%23d4142a'/%3E%3Cpath d='M32 52 C28 58 36 60 32 64' stroke='%23ccc' fill='none' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- ATMOSPHERE -->
+<div class="sky" aria-hidden="true">
+  <div class="moon"></div>
+  <svg class="mansion" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMax slice">
+    <defs>
+      <linearGradient id="win" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb347"/><stop offset="1" stop-color="#ff6a00"/></linearGradient>
+    </defs>
+    <path class="hill" d="M0 470 Q300 420 600 440 T1200 450 V520 H0Z"/>
+    <g class="house">
+      <path d="M380 460 V250 L450 180 L520 250 V200 L560 120 L600 60 L640 120 L680 200 V250 L750 180 L820 250 V460Z"/>
+      <rect x="585" y="20" width="30" height="60"/><path d="M578 22 L600 -10 L622 22Z"/>
+      <rect x="430" y="150" width="14" height="40"/><rect x="770" y="140" width="14" height="50"/>
+      <path d="M360 460 L360 300 L380 280 L400 300 V460Z"/><path d="M820 460 V310 L845 285 L870 310 V460Z"/>
+      <path d="M300 470 L330 380 L360 470Z M870 470 L905 360 L940 470Z" opacity=".8"/>
+    </g>
+    <g class="windows" fill="url(#win)">
+      <rect x="590" y="140" width="20" height="30" rx="10" class="flicker"/>
+      <rect x="430" y="290" width="22" height="34"/><rect x="748" y="290" width="22" height="34" class="flicker2"/>
+      <rect x="520" y="300" width="18" height="28" opacity=".5"/><rect x="662" y="300" width="18" height="28"/>
+      <rect x="588" y="380" width="24" height="80" fill="#2a0f08"/>
+    </g>
+    <g class="trees">
+      <path d="M60 470 L90 300 L80 300 L110 200 L140 300 L130 300 L160 470Z"/>
+      <path d="M1040 470 L1070 280 L1060 280 L1095 170 L1130 280 L1120 280 L1150 470Z"/>
+      <path d="M180 470 C185 380 170 340 150 300 M175 380 C200 350 220 345 240 330 M170 350 C150 330 130 330 120 320" stroke="#07040b" stroke-width="7" fill="none"/>
+    </g>
+  </svg>
+  <canvas id="fog"></canvas>
+  <div class="fog f1"></div><div class="fog f2"></div><div class="fog f3"></div>
+  <div class="balloon" id="balloon"><span></span></div>
+</div>
+
+
+<main id="top">
+  <section class="hero">
+    <div class="glass hero-card">
+      <p class="eyebrow">🎈 Derry Incident Watch · Derry forgets. We don't.</p>
+      <h1>Every incident.<br><span class="grad">Every pattern.</span></h1>
+      <p class="lead">The town has a habit of looking away. Derry Incident Watch keeps every report in one place — pinned on the map, laid on the timeline, cross-referenced by clue — so the patterns can't slip out of memory again.</p>
+      <div class="hero-actions">
+        <a href="#report" class="btn primary">Report an incident</a>
+        <a href="#clues" class="btn ghost" id="heroDetect">Run pattern detector</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="glass stat"><b id="stOpen">0</b><span>open cases</span></div>
+      <div class="glass stat"><b id="stMissing">0</b><span>missing persons</span></div>
+      <div class="glass stat"><b id="stBalloon">0</b><span>red balloon reports</span></div>
+      <div class="glass stat cyc"><b id="stCycle">—</b><span>until the next cycle (2043)</span></div>
+    </div>
+    <div class="glass signposts">
+      <b>No roads in, no signs out.</b> Derry lost its nav bar. Find your way like a local: tap a <em>signpost on the town map</em>, tap the <em>red balloon</em> for "where to?", follow the balloon trail at the end of each section, or press <kbd>1</kbd>–<kbd>5</kbd>.
+    </div>
+    <div class="glass sponsor" id="sponsor"><span class="sp-tag">Official sponsor</span><b>KAPIDHWAJ</b><span class="sp-note">Sponsor spot · details coming</span></div>
+    <a class="trail" href="#map">follow the balloon → the town map 🎈</a>
+  </section>
+
+  <!-- MAP -->
+  <section id="map" class="section">
+    <div class="sec-head"><h2>Town Map</h2><p>Tap a pin to open the case file. Pins pulse when they share clues with the selected case.</p></div>
+    <div class="map-wrap">
+      <div class="glass map-card">
+        <svg id="townMap" viewBox="0 0 1000 640" role="img" aria-label="Illustrated map of Derry with incident pins">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(255,255,255,.04)"/></pattern>
+            <radialGradient id="barrens"><stop offset="0" stop-color="#2c4a2a"/><stop offset="1" stop-color="#1a2c1b" stop-opacity=".2"/></radialGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <rect width="1000" height="640" fill="#140d1e"/>
+          <rect width="1000" height="640" fill="url(#grid)"/>
+          <!-- Barrens -->
+          <ellipse cx="770" cy="470" rx="210" ry="140" fill="url(#barrens)"/>
+          <text x="760" y="585" class="lbl">THE BARRENS</text>
+          <!-- Kenduskeag stream / canal -->
+          <path d="M-10 250 C150 230 260 300 380 300 S600 260 700 330 S850 420 1010 400" class="water"/>
+          <path d="M380 300 C420 340 430 420 470 470 S560 560 600 650" class="water thin"/>
+          <text x="140" y="228" class="lbl water-l">KENDUSKEAG STREAM</text>
+          <text x="455" y="545" class="lbl water-l" transform="rotate(62 455 545)">THE CANAL</text>
+          <!-- roads -->
+          <path d="M0 120 H1000 M0 420 H560 M240 0 V640 M560 0 V640 M820 0 V280" class="road"/>
+          <path d="M240 120 L560 420" class="road"/>
+          <text x="20" y="112" class="lbl road-l">KANSAS ST</text>
+          <text x="250" y="20" class="lbl road-l">WITCHAM ST</text>
+          <text x="570" y="20" class="lbl road-l">JACKSON ST</text>
+          <text x="20" y="412" class="lbl road-l">NEIBOLT ST</text>
+          <!-- blocks -->
+          <g class="blocks">
+            <rect x="260" y="140" width="80" height="60"/><rect x="360" y="140" width="60" height="40"/>
+            <rect x="440" y="150" width="100" height="60"/><rect x="580" y="140" width="90" height="70"/>
+            <rect x="690" y="140" width="110" height="50"/><rect x="30" y="140" width="190" height="70"/>
+            <rect x="30" y="300" width="80" height="90"/><rect x="130" y="320" width="90" height="70"/>
+            <rect x="580" y="40" width="110" height="60"/><rect x="40" y="30" width="170" height="70"/>
+            <rect x="840" y="40" width="130" height="60"/>
+          </g>
+          <!-- landmarks -->
+          <g class="lm"><rect x="600" y="52" width="70" height="40" rx="4"/><text x="635" y="110" class="lbl lm-l">PUBLIC LIBRARY</text></g>
+          <g class="lm"><circle cx="890" cy="200" r="26"/><text x="890" y="245" class="lbl lm-l">STANDPIPE</text></g>
+          <g class="lm"><path d="M60 470 L90 445 L120 470 V510 H60Z"/><text x="90" y="530" class="lbl lm-l">29 NEIBOLT ST</text></g>
+          <g class="lm"><path d="M620 300 h70" stroke="#c9a" stroke-width="8"/><text x="655" y="290" class="lbl lm-l">KISSING BRIDGE</text></g>
+          <g class="lm"><circle cx="330" cy="175" r="7"/><text x="335" y="230" class="lbl lm-l">WITCHAM DRAIN</text></g>
+          <g class="lm"><rect x="40" y="40" width="70" height="40" rx="4"/><text x="120" y="68" class="lbl lm-l">DERRY ELEMENTARY</text></g>
+          <g class="lm"><rect x="860" y="52" width="60" height="36" rx="4"/><text x="890" y="112" class="lbl lm-l">IRONWORKS (RUINS)</text></g>
+          <g class="lm"><circle cx="420" cy="420" r="18"/><text x="420" y="452" class="lbl lm-l">BASSEY PARK</text></g>
+          <g id="signs"><g class="go" data-go="#cases" role="link" tabindex="0" aria-label="CASE FILES"><rect x="28" y="540" width="124" height="22" rx="11"/><text x="90" y="555">CASE FILES →</text></g>
+<g class="go" data-go="#clues" role="link" tabindex="0" aria-label="CLUE SEARCH"><rect x="573" y="116" width="124" height="22" rx="11"/><text x="635" y="131">CLUE SEARCH →</text></g>
+<g class="go" data-go="#timeline" role="link" tabindex="0" aria-label="TIMELINE"><rect x="828" y="251" width="124" height="22" rx="11"/><text x="890" y="266">TIMELINE →</text></g>
+<g class="go" data-go="#report" role="link" tabindex="0" aria-label="REPORT"><rect x="593" y="328" width="124" height="22" rx="11"/><text x="655" y="343">REPORT →</text></g></g>
+          <g id="links"></g>
+          <g id="pins"></g>
+          <text x="960" y="620" class="lbl compass" text-anchor="end">N ↑ · not to scale · fictional</text>
+        </svg>
+      </div>
+      <aside class="glass map-side" id="mapSide">
+        <h3>Hotspots</h3>
+        <ul id="hotspots"></ul>
+        <h3 style="margin-top:14px">Signposts</h3>
+        <ul class="posts">
+          <li data-go="#cases">🏚️ Neibolt House <span>→ Case files</span></li>
+          <li data-go="#timeline">🗼 The Standpipe <span>→ Timeline</span></li>
+          <li data-go="#clues">📚 The Library <span>→ Clue search</span></li>
+          <li data-go="#report">🌉 Kissing Bridge <span>→ Report</span></li>
+        </ul>
+        <p class="hint">The drains, the Barrens and Neibolt Street account for most reports. Coincidence is not a pattern — until it is.</p>
+      </aside>
+    </div>
+    <a class="trail" href="#cases">follow the balloon → Case files (Neibolt House) 🎈</a>
+  </section>
+
+  <!-- CASES -->
+  <section id="cases" class="section">
+    <div class="sec-head"><h2>Case Reports</h2><p><span id="caseCount">0</span> files · newest first</p></div>
+    <div class="case-tools glass">
+      <div class="seg" id="statusSeg">
+        <button data-s="all" class="on">All</button><button data-s="Open">Open</button><button data-s="Missing">Missing</button><button data-s="Unexplained">Unexplained</button><button data-s="Closed">Closed</button>
+      </div>
+    </div>
+    <div id="caseGrid" class="case-grid"></div>
+    <a class="trail" href="#timeline">follow the balloon → the Timeline (the Standpipe) 🎈</a>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline" class="section">
+    <div class="sec-head"><h2>The 27-Year Timeline</h2><p>The spikes come back like clockwork. Tap a year to see its cases.</p></div>
+    <div class="glass cycle-bar" id="cycleBar"></div>
+    <div class="timeline" id="tl"></div>
+    <a class="trail" href="#clues">follow the balloon → Clue search (the Library) 🎈</a>
+  </section>
+
+  <!-- CLUES -->
+  <section id="clues" class="section">
+    <div class="sec-head"><h2>Searchable Clues</h2><p>Search every case, witness statement and piece of evidence. Then let the detector connect the dots.</p></div>
+    <div class="glass search-panel">
+      <div class="search-row">
+        <input id="q" type="search" placeholder="Search clues… e.g. balloon, drain, whistling, 1962" autocomplete="off">
+        <select id="fLoc"><option value="">All locations</option></select>
+        <select id="fYear"><option value="">All years</option></select>
+      </div>
+      <div class="tags" id="tagRow"></div>
+      <div class="detector">
+        <button class="btn primary" id="detectBtn">🔍 Run pattern detector</button>
+        <span id="detectOut" class="det-out">Pick a case or run the detector to find linked incidents.</span>
+      </div>
+    </div>
+    <div class="clue-results" id="clueResults"></div>
+    <div class="glass patterns" id="patterns" hidden></div>
+    <a class="trail" href="#report">follow the balloon → Report an incident (Kissing Bridge) 🎈</a>
+  </section>
+
+  <!-- REPORT -->
+  <section id="report" class="section">
+    <div class="sec-head"><h2>Report an Incident</h2><p>Anonymous. Saved on this device and added to the board instantly.</p></div>
+    <form class="glass form" id="reportForm">
+      <div class="row2">
+        <label>What happened? <input name="title" required maxlength="80" placeholder="e.g. Laughter from the storm drain on Witcham"></label>
+        <label>Location <select name="loc" id="formLoc" required></select></label>
+      </div>
+      <div class="row2">
+        <label>Date <input name="date" type="date" required></label>
+        <label>Witness (optional) <input name="witness" maxlength="40" placeholder="Anonymous"></label>
+      </div>
+      <label>Details <textarea name="desc" rows="3" required maxlength="500" placeholder="What did you see, hear or smell? Times, colours, sounds…"></textarea></label>
+      <fieldset class="tagpick" id="tagPick"><legend>Tags</legend></fieldset>
+      <div class="form-actions"><button class="btn primary" type="submit">File report</button><span id="formMsg" class="form-msg" role="status"></span></div>
+    </form>
+    <a class="trail" href="#map">follow the balloon → back to the town map 🎈</a>
+  </section>
+</main>
+
+<footer class="glass footer">
+  <div>
+    <b>Team Hack-O'-Lantern</b>
+    <p>Harsh Kalra — Team Leader · Bhumi Aggarwal — Member</p>
+  </div>
+  <p class="twist">Twist: Lost a Limb, no nav bar; navigate by the map, the balloons and the trail.</p>
+  <p class="disc">Fan project for a hackathon. Derry, Pennywise and related names belong to their respective rights holders; this site is fictional, unofficial and not affiliated with or endorsed by them. All cases, people and copy are invented. No real incidents are tracked.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" hidden>
+  <div class="modal-bg" data-close></div>
+  <article class="glass modal-card" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="x" data-close aria-label="Close">✕</button>
+    <div id="mBody"></div>
+  </article>
+</div>
+<div class="toast glass" id="toast" hidden></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>window.BALLOON_NAV={items:[
+ {href:"#top",label:"Top",icon:"🏠",key:"0"},
+ {href:"#map",label:"Map",icon:"🗺️",key:"1"},
+ {href:"#cases",label:"Cases",icon:"📁",key:"2"},
+ {href:"#timeline",label:"Timeline",icon:"⏳",key:"3"},
+ {href:"#clues",label:"Clues",icon:"🔍",key:"4"},
+ {href:"#report",label:"Report",icon:"✍️",key:"5"}],tip:"tap the balloon · keys 1–5"};</script>
+<script src="balloon-nav.js"></script>
+</body>
+</html>

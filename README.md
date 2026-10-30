@@ -100,3 +100,15 @@ On phones, tablets and small screens the site switches itself to a light build s
 - sounds load after you enter; the music streams instead of being decoded whole
 
 Force a level for testing with `?q=2` (full), `?q=1` (light) or `?q=0` (lowest).
+
+
+## Round 2 — Derry Incident Watch ("Welcome to Derry" curse + "Haunted Glass" hex)
+
+The main page now has a **Derry Incident Watch** section (button at the top, or `#derry`), and the full tracker lives in `derry/` (plain HTML/CSS/JS, no build):
+
+- `derry/index.html` — layout: town map (SVG), case reports, timeline, clue search, report form
+- `derry/data.js` — all fictional locations, cases, tags and the 27-year cycle years. Add new cases/locations here.
+- `derry/app.js` — rendering, the case modal, search/filters, the **pattern detector** (links cases by shared clues, same location and 27-year echoes), and the report form (saved in localStorage). Extension hooks: `DW.addCase()`, `DW.renderAll()`, `DW.openCase(id)`, `DW.links(id)`, `DW.hooks.push(fn)`.
+- `derry/style.css` — Haunted Glass: frosted panels with `backdrop-filter: blur()` (plus `-webkit-`), kept on for phones, over a foggy haunted-mansion background with purple + orange accents.
+
+Everything in Derry Incident Watch is fictional fan content made for a hackathon.

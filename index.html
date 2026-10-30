@@ -79,6 +79,7 @@
       <h1 class="title-drip">PENNYWISE</h1>
       <p class="subtitle">— the dilemma —</p>
       <p class="scroll-hint">he's watching you · scroll <span>↓</span></p>
+      <a class="trail" href="#derry">or follow the balloon ↓ Derry Incident Watch 🎈</a>
     </div>
   </section>
 
@@ -181,10 +182,37 @@
       </div>
       <div id="ending" class="ending"></div>
     </div>
+    <a class="trail" href="#derry">follow the balloon → Derry Incident Watch 🎈</a>
   </section>
 
   <!-- ============ FOOTER / CREDITS ============ -->
-  <footer class="credits">
+
+  <!-- ============ DERRY INCIDENT WATCH (Round 2: "Welcome to Derry" curse + "Haunted Glass" hex) ============ -->
+  <section class="dw-sec" id="derry" aria-labelledby="dwTitle">
+    <div class="dw-bg" aria-hidden="true">
+      <svg class="dw-mansion" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMax slice"><path d="M0 470 Q300 420 600 440 T1200 450 V520 H0Z"/><path d="M380 460 V250 L450 180 L520 250 V200 L560 120 L600 60 L640 120 L680 200 V250 L750 180 L820 250 V460Z M585 20 h30 v60 h-30Z M360 460 L360 300 L380 280 L400 300 V460Z M820 460 V310 L845 285 L870 310 V460Z M60 470 L90 300 L80 300 L110 200 L140 300 L130 300 L160 470Z M1040 470 L1070 280 L1060 280 L1095 170 L1130 280 L1120 280 L1150 470Z"/><g fill="#ff8a2a"><rect x="590" y="140" width="20" height="30" rx="10"/><rect x="430" y="290" width="22" height="34"/><rect x="748" y="290" width="22" height="34"/><rect x="662" y="300" width="18" height="28"/></g></svg>
+      <div class="dw-fog dw-f1"></div><div class="dw-fog dw-f2"></div><div class="dw-moon"></div>
+    </div>
+    <div class="dw-inner">
+      <div class="dw-glass dw-intro">
+        <p class="dw-kicker">The Curse · Welcome to Derry</p>
+        <h2 id="dwTitle">Derry Incident Watch</h2>
+        <p>Derry's people can't report or connect what keeps happening in their town. So we built them a place that remembers: a town map of incidents, case reports, the 27-year timeline and a searchable clue board with a pattern detector that links the cases together.</p>
+        <div class="dw-actions"><a class="dw-btn dw-primary" href="derry/" target="_blank" rel="noopener">Open full screen ↗</a><a class="dw-btn" href="derry/#report" target="_blank" rel="noopener">Report an incident</a></div>
+      </div>
+      <div class="dw-cards">
+        <div class="dw-glass dw-card"><b>🗺️ Town map</b><span>Clickable pins: Neibolt House, the Barrens, the Witcham St drain, the Standpipe, the library, the canal, the Kissing Bridge.</span></div>
+        <div class="dw-glass dw-card"><b>📁 Case reports</b><span>Case files with witness, status and evidence, plus a live report form.</span></div>
+        <div class="dw-glass dw-card"><b>⏳ Timeline</b><span>1908 · 1935 · 1962 · 1989 · 2016 · 2043, plus recent incidents.</span></div>
+        <div class="dw-glass dw-card"><b>🔍 Clues</b><span>Search and filter by red balloon, clown sighting, missing child, sewer voices. Linked cases light up.</span></div>
+      </div>
+      <p class="dw-hint">No nav bar here either (twist: Lost a Limb). Inside the tracker, tap the town-map signposts or its red balloon, or follow the trail.</p>
+      <div class="dw-glass dw-frame"><iframe src="derry/" loading="lazy" title="Derry Incident Watch: map, cases, timeline and clues"></iframe></div>
+      <a class="trail" href="#credits">follow the balloon → the credits 🎈</a>
+    </div>
+  </section>
+
+  <footer class="credits" id="credits">
     <p class="team">Team <span>Hack-O'-Lantern</span> 🎃</p>
     <p class="event">Spook-a-thon 2026 — Round 2</p>
     <p class="project">Project: <b>Hack-O'-Lantern</b> · Character: <b>Pennywise</b></p>
@@ -202,6 +230,8 @@
 
     <p class="credit-line">Built with HTML, CSS, JavaScript, three.js &amp; GSAP · Story, procedural fallback clown &amp; sound design by Team Hack-O'-Lantern · Original voice lines, music &amp; SFX generated with AI.</p>
     <p class="credit-line model-credit">Fan model: <a href="https://sketchfab.com/3d-models/pennywisemodel-905da6d9d74e4d66ab8f47e2f375287b" target="_blank" rel="noopener">"Pennywise+model"</a> by <a href="https://sketchfab.com/ffincognito98" target="_blank" rel="noopener">ffincognito98</a>, licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> (optimized for the web). Fallback clown: procedural, built in code by the team.</p>
+    <p class="twist-line">Twist: Lost a Limb, no nav bar; navigate by the map, the balloons and the trail.</p>
+    <p class="sponsor-slot" id="sponsor">Official sponsor: <b>KAPIDHWAJ</b></p>
     <p class="disclaimer">Fan-made hackathon project. Pennywise and IT belong to their respective owners.</p>
     <p class="tiny">Psst... try the Konami code. Or click the glowing eyes in the tunnel three times.</p>
     <a href="#top" class="btn-ghost back">↑ climb back up</a>
@@ -213,5 +243,12 @@
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/main.js"></script>
 <script type="module" src="js/clown3d.js"></script>
+<script>window.BALLOON_NAV={items:[
+ {href:"#top",label:"Top",icon:"🤡",key:"1"},
+ {href:"#tunnel",label:"Tunnel",icon:"🕳️",key:"2"},
+ {href:"#choice",label:"Choice",icon:"⚖️",key:"3"},
+ {href:"#derry",label:"Derry Watch",icon:"🗺️",key:"4"},
+ {href:"#credits",label:"Credits",icon:"🎃",key:"5"}],tip:"tap the balloon · keys 1–5"};</script>
+<script src="derry/balloon-nav.js"></script>
 </body>
 </html>
