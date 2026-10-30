@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pennywise: The Dilemma — Hack-O'-Lantern | Spook-a-thon 2026</title>
+<meta name="description" content="Pennywise: The Dilemma. A fan-made interactive horror story about the storm-drain clown of Derry, torn between his hunger for fear and his loneliness. By Team Hack-O'-Lantern, Spook-a-thon 2026 Round 2.">
+<meta property="og:title" content="Pennywise: The Dilemma — Hack-O'-Lantern">
+<meta property="og:description" content="Come down to the drains. Scroll if you dare. Spook-a-thon 2026 · Round 2">
+<meta property="og:image" content="assets/img/og.jpg">
+<meta name="theme-color" content="#050807">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Creepster&family=Nosifer&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>/* light build flag for phones, set before first paint */(function(){try{var l=matchMedia('(pointer: coarse)').matches||Math.min(innerWidth,innerHeight)<760;var q=new URLSearchParams(location.search).get('q');if(q==='2')l=false;else if(q==='1'||q==='0')l=true;if(l){document.documentElement.classList.add('lite');window.HOL_LITE=true}}catch(e){}})();</script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body class="locked">
+
+<!-- ============ CLICK GATE (unlocks audio) ============ -->
+<div id="gate" role="dialog" aria-label="Enter the site">
+  <div class="gate-fog"></div>
+  <p class="gate-kicker">Team Hack-O'-Lantern presents</p>
+  <h1 class="gate-title">PENNYWISE</h1>
+  <p class="gate-sub2">the dilemma</p>
+  <p class="gate-sub">sound on · headphones recommended</p>
+  <button id="enterBtn" class="btn-blood">Enter if you dare</button>
+  <button id="enterSilent" class="btn-ghost">I'm a coward (enter muted)</button>
+  <p class="gate-warn">⚠ Contains jumpscares, flashing images and loud screams.</p>
+</div>
+
+<!-- ============ THE 3D CLOWN (fixed behind the story; scroll moves the camera) ============ -->
+<div id="stage3d" aria-label="Interactive 3D clown. He follows your cursor. Point at him and he screams.">
+  <canvas id="clown3d"></canvas>
+  <div id="clownLoading">summoning...</div>
+  <div id="clownFlash"></div>
+</div>
+
+<!-- ============ FIXED ATMOSPHERE LAYERS ============ -->
+<div id="fog" aria-hidden="true"><div class="fog-a"></div><div class="fog-b"></div></div>
+<div id="grain" aria-hidden="true"></div>
+<div id="vignette" aria-hidden="true"></div>
+<div id="flashlight" aria-hidden="true"></div>
+<div id="critters" aria-hidden="true"></div>
+<div id="balloons" aria-hidden="true"></div>
+<div id="drops" aria-hidden="true"></div>
+
+<!-- jumpscare overlay: swap assets/img/jumpscare.jpg for your own image (same name) -->
+<div id="jumpscare" aria-hidden="true"><img src="assets/img/jumpscare.jpg" alt=""></div>
+<!-- konami / secret overlay -->
+<div id="secret" aria-hidden="true">
+  <div class="secret-card">
+    <h2>🎪 You found the secret 🎪</h2>
+    <p>Every 27 years, the night before he wakes, one red balloon floats up out of a Derry storm drain with a name written on it. This cycle, the balloon was blank. <b>Nobody in town was afraid enough to be chosen.</b></p>
+    <p class="small">Clown Mode activated. Every balloon in town is yours.</p>
+    <button class="btn-ghost" id="secretClose">close (if he lets you)</button>
+  </div>
+</div>
+
+<!-- HUD -->
+<button id="muteBtn" aria-label="Toggle sound" title="Sound on/off">🔊</button>
+<div id="depth" aria-hidden="true"><span>DEPTH</span><b id="depthVal">0m</b><div class="depth-bar"><i id="depthFill"></i></div></div>
+<div id="toast" aria-live="polite"></div>
+
+<main id="story">
+
+  <!-- HERO: extreme close-up of his face (the 3D canvas behind) -->
+  <section class="hero" id="top" data-beat="face">
+    <div class="bulb"><i></i></div>
+    <div class="hero-copy">
+      <p class="kicker">Derry, Maine · the storm drains · year 27</p>
+      <h1 class="title-drip">PENNYWISE</h1>
+      <p class="subtitle">— the dilemma —</p>
+      <p class="scroll-hint">he's watching you · scroll <span>↓</span></p>
+    </div>
+  </section>
+
+  <!-- CHAPTER I : head tilt -->
+  <section class="chapter left" data-voice="voice-come-down" data-beat="tilt" data-depth="12">
+    <div class="panel">
+      <div class="chap-num">Chapter I</div>
+      <h2 class="chap-title">The Town Above</h2>
+      <div class="prose">
+        <p>Every 27 years, something wakes up under Derry. It sleeps in the storm drains, curled between the pipes, and when it opens its eyes it is <em>hungry</em>.</p>
+        <p>The townsfolk never talk about it. They just keep their kids away from the gutters when it rains, and they don't ask why the drains smell like popcorn and rust.</p>
+        <p class="whisper">"Come down here... it's warm in the dark."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER II : the wave + first lunge -->
+  <section class="chapter right" data-voice="voice-see-you" data-beat="wave" data-depth="40">
+    <div class="panel red">
+      <div class="chap-num">Chapter II</div>
+      <h2 class="chap-title">The Hunger</h2>
+      <div class="prose">
+        <p>Pennywise doesn't just hunt. He feeds on <em>fear</em>. A shriek at a sleepover. A heartbeat skipping on a dark staircase. A scream echoing down a pipe is a feast that keeps him grinning for decades.</p>
+        <p>A red balloon bobbing where no balloon should be. A face in the drain. For centuries Derry fed him, cycle after cycle. And he was <span class="glitch" data-text="happy">happy</span>.</p>
+      </div>
+      <p class="aside">Did you hear something behind you?</p>
+    </div>
+    <div class="js-trigger" data-scare="0"></div>
+  </section>
+
+  <!-- INTERLUDE : point at him -->
+  <section class="interlude" data-beat="idle" data-depth="66">
+    <div class="panel slim">
+      <div class="chap-num">Exhibit A</div>
+      <h2 class="chap-title small">Face the Clown</h2>
+      <p class="stage-hint">His eyes follow your cursor. <b>Point at him.</b> Go on. <span class="mobile-only">(tap him)</span></p>
+    </div>
+  </section>
+
+  <!-- CHAPTER III : the balloon -->
+  <section class="chapter left" data-voice="voice-sleep" data-beat="balloon" data-depth="90">
+    <div class="panel">
+      <div class="chap-num">Chapter III</div>
+      <h2 class="chap-title">The Fading</h2>
+      <div class="prose fade-prose">
+        <p>But this time, when he woke, Derry had changed. The kids had glowing screens now, full of things scarier than any drain. They laughed at the dark. They walked right past the gutters.</p>
+        <p>He held out a balloon, the way he always had. Nobody took it. And Pennywise noticed something horrible: without their fear, <span class="fade-word">he was disappearing.</span></p>
+        <p class="whisper">"Why did you stop being scared?"</p>
+      </div>
+    </div>
+    <div class="js-trigger" data-scare="1"></div>
+  </section>
+
+  <!-- FLASHLIGHT ZONE -->
+  <section class="dark-zone" id="tunnel" data-voice="voice-lonely" data-beat="balloon" data-depth="120">
+    <div class="chap-num">The Tunnel</div>
+    <h2 class="chap-title">Use your light</h2>
+    <p class="stage-hint">Move your cursor (or finger) to shine the flashlight. Read the walls.</p>
+    <div class="wall" id="wall">
+      <span class="msg" style="left:8%;top:12%">I WAS HERE FIRST</span>
+      <span class="msg" style="left:56%;top:8%;transform:rotate(6deg)">nobody plays with me anymore</span>
+      <span class="msg big" style="left:18%;top:36%;transform:rotate(-4deg)">HE'S BEHIND YOU</span>
+      <span class="msg" style="left:62%;top:50%;transform:rotate(-8deg)">27 years is a long time to be alone</span>
+      <span class="msg" style="left:6%;top:72%;transform:rotate(3deg)">count the balloons. one is a lie.</span>
+      <span class="msg code" style="left:52%;top:80%">↑ ↑ ↓ ↓ ← → ← → B A</span>
+      <span class="msg hand" style="left:40%;top:60%">🖐</span>
+      <div class="wall-eyes" style="left:84%;top:24%"><i></i><i></i></div>
+      <div class="wall-eyes" style="left:14%;top:56%"><i></i><i></i></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER IV : THE DILEMMA (crouch by the drain) -->
+  <section class="chapter right dilemma" data-voice="voice-stopped-scared" data-beat="crouch" data-depth="150">
+    <div class="panel wide">
+      <div class="chap-num">Chapter IV</div>
+      <h2 class="chap-title">The Dilemma</h2>
+      <div class="split">
+        <div class="side hunger">
+          <h3>His Hunger</h3>
+          <p>If he scares you, he lives. He grows fat on it and sleeps another 27 years. The drains get louder, the balloons come back... and he stays a monster, because nobody gets close to a monster.</p>
+        </div>
+        <div class="side lonely">
+          <h3>His Loneliness</h3>
+          <p>If he stops, he fades away for good. But for one moment before he's gone, someone might sit by the drain and talk to him. Not scream. <em>Talk.</em></p>
+        </div>
+      </div>
+      <p class="center big-q">A clown who can only exist if you're afraid of him.<br>Should you be?</p>
+    </div>
+    <div class="js-trigger" data-scare="2"></div>
+  </section>
+
+  <!-- CHOICE -->
+  <section class="choice" id="choice" data-voice="voice-choice" data-beat="crouch" data-depth="200">
+    <div class="panel wide center">
+      <div class="chap-num">Your Choice</div>
+      <h2 class="chap-title">He's waiting at the drain</h2>
+      <div class="choice-btns">
+        <button class="btn-blood" id="feedBtn">🩸 Feed him your fear</button>
+        <button class="btn-light" id="freeBtn">🕯 Set him free</button>
+      </div>
+      <div id="ending" class="ending"></div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER / CREDITS ============ -->
+  <footer class="credits">
+    <p class="team">Team <span>Hack-O'-Lantern</span> 🎃</p>
+    <p class="event">Spook-a-thon 2026 — Round 2</p>
+    <p class="project">Project: <b>Hack-O'-Lantern</b> · Character: <b>Pennywise</b></p>
+
+    <!-- ===================================================== -->
+    <!-- ✏️  EDIT TEAM MEMBER NAMES HERE                         -->
+    <!--    Change the names/roles below, or add <li> lines.    -->
+    <!--    Add or remove <li> lines as needed.                  -->
+    <!-- ===================================================== -->
+    <ul class="members">
+      <li><b>Harsh Kalra</b> · Team Leader</li>
+      <li><b>Bhumi Aggarwal</b> · Member</li>
+    </ul>
+    <!-- ===================== END TEAM NAMES ================= -->
+
+    <p class="credit-line">Built with HTML, CSS, JavaScript, three.js &amp; GSAP · Story, procedural fallback clown &amp; sound design by Team Hack-O'-Lantern · Original voice lines, music &amp; SFX generated with AI.</p>
+    <p class="credit-line model-credit">Fan model: <a href="https://sketchfab.com/3d-models/pennywisemodel-905da6d9d74e4d66ab8f47e2f375287b" target="_blank" rel="noopener">"Pennywise+model"</a> by <a href="https://sketchfab.com/ffincognito98" target="_blank" rel="noopener">ffincognito98</a>, licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> (optimized for the web). Fallback clown: procedural, built in code by the team.</p>
+    <p class="disclaimer">Fan-made hackathon project. Pennywise and IT belong to their respective owners.</p>
+    <p class="tiny">Psst... try the Konami code. Or click the glowing eyes in the tunnel three times.</p>
+    <a href="#top" class="btn-ghost back">↑ climb back up</a>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+<script type="module" src="js/clown3d.js"></script>
+</body>
+</html>

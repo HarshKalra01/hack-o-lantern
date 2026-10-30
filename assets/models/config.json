@@ -1,0 +1,8 @@
+{
+  "model": "clown.glb",
+  "mobileModel": "clown-mobile.glb",
+  "default": "fan",
+  "height": 8.2,
+  "rotateY": 0,
+  "_help": "model: the fan GLB in this folder; the site always shows it (set to null to use only the procedural clown, which is also the automatic fallback if the GLB fails to load). height = how tall the fan model stands; rotateY = turn it (radians) if it faces the wrong way. mobileModel: a lighter copy phones load instead (delete it or set to null to give phones the full model)."
+}
